@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Profile — Stage 00</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 28px 16px;
+        color: #11233d;
+        background: #edf3fb;
+      }
+
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        border-radius: 16px;
+        background: white;
+        padding: 28px;
+        box-shadow: 0 14px 35px #11233d16;
+      }
+
+      h1 {
+        margin-top: 0;
+        color: #11233d;
+      }
+
+      p {
+        line-height: 1.55;
+      }
+
+      label {
+        display: block;
+        font-weight: 650;
+        margin: 18px 0 7px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        max-width: 430px;
+        padding: 10px;
+        border: 1px solid #9eb0c7;
+        border-radius: 8px;
+        font: inherit;
+      }
+
+      input[type="file"] {
+        display: block;
+        max-width: 100%;
+      }
+
+      button {
+        padding: 10px 14px;
+        margin: 8px 8px 0 0;
+        border: 0;
+        background: #2563eb;
+        border-radius: 8px;
+        color: white;
+        font-weight: 650;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #1d4ed8;
+      }
+
+      button:focus-visible,
+      input:focus-visible {
+        outline: 3px solid #f59e0b;
+        outline-offset: 2px;
+      }
+
+      .panel {
+        padding: 13px 16px;
+        margin-top: 16px;
+        border-radius: 10px;
+        background: #f3f7ff;
+      }
+
+      .status {
+        color: #116044;
+        min-height: 1.5em;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        font: inherit;
+      }
+
+      img {
+        max-width: 190px;
+        max-height: 190px;
+        border-radius: 10px;
+        margin: 12px 0;
+      }
+
+      small {
+        color: #526579;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Student Profile Utility</h1>
+      <p>This project grows one browser API at a time.</p>
+      <label for="name">Display name</label>
+      <input
+        id="name"
+        type="text"
+        placeholder="Alex Chen"
+        autocomplete="nickname"
+      />
+      <div class="actions"></div>
+      <section class="panel">
+        <h2>Profile summary</h2>
+        <pre id="summary"></pre>
+      </section>
+
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+      <small
+        >Class demo: no passwords, uploads, or backend. Use localhost for
+        clipboard/storage tests.</small
+      >
+    </main>
+    <script>
+      const nameInput = document.querySelector("#name");
+      const status = document.querySelector("#status");
+      const summary = document.querySelector("#summary");
+
+      function profileText() {
+        return (
+          "Student profile: " + (nameInput.value.trim() || "Unnamed student")
+        );
+      }
+
+      function updateSummary() {
+        summary.textContent = profileText();
+      }
+
+      nameInput.addEventListener("input", updateSummary);
+      updateSummary();
+    </script>
+  </body>
+</html>
